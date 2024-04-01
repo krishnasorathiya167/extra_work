@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Brand</td>
+                <td>Categery</td>
+                <td>Description</td>
+                <td>Discount Percentage</td>
+                <td>id</td>
+                <td>image</td>
+                <td>price</td>
+                <td>Rationg</td>
+                <td>Stock</td>
+                <td>Thumbnail</td>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+
+
+
+    <script>
+
+        let tbody = document.getElementById("tbody");
+
+        try{
+            let data = async () => {
+            let data2 = await fetch("https://dummyjson.com/products");
+            let data3 = await data2.json();
+            console.log(data3);
+
+            data3.map((val,ind)=>{
+
+                console.log("vfwksnd");
+
+
+                // let tr = document.createElement("tr");
+                // tr.innerHTML = `<td>${val.brand}</td>
+                //                 <td>${val.categery}</td>
+                //                 <td>${val.description}</td>
+                //                 <td>${val.discountPercentage}</td>
+                //                 <td>${val.id}</td>
+                //                 <td>${val.image}</td>
+                //                 <td>${val.price}</td>
+                //                 <td>${val.rating}</td>
+                //                 <td>${val.stock}</td>
+                //                 <td>${val.thumbnail}</td>
+                //                 <td>${val.title}</td>`
+
+                // tbody.appendChild(tr)
+                
+            })
+        }
+        data()
+        }
+
+        catch(err){
+            console.log(err);
+        }
+
+       
+
+
+    </script>
+</body>
+</html>

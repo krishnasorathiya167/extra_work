@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+       background-color: rgb(146, 120, 73);
+}
+    card{
+        max-width: 300px;
+        border: 1px solid transparent;
+        padding: 20px;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: white;
+        margin-bottom: 10px;
+    }
+    #data{
+        margin-top: 120px;
+        margin-left: 15px;
+        margin-right:15px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card-img{
+        display: flex;
+        justify-content: center;
+    }
+    .card-img img{
+        height: 200px;
+        width: 200px;
+    }
+</style>
+<body>
+    
+    <div id="data">
+    </div>
+
+
+    <script>
+
+        let data = document.getElementById("data");
+
+        let result = async() =>{
+            let response =await fetch("https://fakestoreapi.com/products/category/jewelery");
+            let reply =await response.json();
+            console.log(reply);
+            // console.log(response);
+
+            reply.map((val,ind)=>{
+                let card = document.createElement("card");
+                card.innerHTML = `<div class="card-img">
+                                         <img src="${val.image}" alt="">
+                                    </div>
+                                    <h3>${val.title}</h3>
+                                    <p>${val.category}</p>
+                                    <h3>Price : ${val.price} $</h3>
+                                    <p>${val.description}</p>   `
+
+             data.appendChild(card)
+            })
+        }
+
+        result()
+
+        
+    </script>
+
+</body>
+</html>
